@@ -15,7 +15,7 @@ public class writeReadFile {
 	public static void main(String[] args) {
 
 		int[] numbers = {2,3,5,7,11,13,17,19,23,29};
-		File file = new File("10_prime_numbers.txt");
+		File file = new File("10_prime_numbers.dat");
 		
 		System.out.println("Write:");
 		writeFile(file, numbers);
@@ -50,9 +50,9 @@ public class writeReadFile {
 	}
 
 	private static void writeFile(File file, int[] numbers) {
-		FileOutputStream output;
+		
 		try {
-			output = new FileOutputStream(file);
+			FileOutputStream output = new FileOutputStream(file);
 			BufferedOutputStream buffer = new BufferedOutputStream(output);
 			
 			for(int i=0; i<numbers.length; i++) {
