@@ -59,7 +59,6 @@ public class primeNumbers {
 				buffer.write(numbers[i]);
 				System.out.print(numbers[i]+" ");
 			}
-			
 			buffer.close();
 			
 		} catch (FileNotFoundException fnfe) {
