@@ -66,7 +66,6 @@ public class randomNumbers {
 			}catch(EOFException eofe) {
 				buffer.close();
 			}
-			//stream.close();
 			
 		} catch(IOException ioe){
 			System.out.println(ioe.getMessage());
