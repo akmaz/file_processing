@@ -10,18 +10,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-public class writeReadFile {
+public class primeNumbers {
 
 	public static void main(String[] args) {
 
 		int[] numbers = {2,3,5,7,11,13,17,19,23,29};
 		File file = new File("10_prime_numbers.dat");
 		
-		System.out.println("Write:");
+		System.out.println("Write prime numbers:");
 		writeFile(file, numbers);
 		
 		System.out.println();
-		System.out.println("Read:");
+		System.out.println("Read prime numbers:");
 		readFile(file);
 		
 	}
@@ -59,7 +59,6 @@ public class writeReadFile {
 				buffer.write(numbers[i]);
 				System.out.print(numbers[i]+" ");
 			}
-			
 			buffer.close();
 			
 		} catch (FileNotFoundException fnfe) {
