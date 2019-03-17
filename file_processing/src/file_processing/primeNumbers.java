@@ -2,10 +2,8 @@ package file_processing;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -39,12 +37,8 @@ public class primeNumbers {
 					System.out.print(n+" ");
 			} while(n != -1);
 			buffer.close();
-			
-		} catch (FileNotFoundException fnfe) {
-			System.out.println(fnfe.toString());
-		} catch(EOFException eof) {
-			System.out.println(eof.toString());
-		} catch (IOException ioe) {
+		}
+		catch (IOException ioe) {
 			System.out.println(ioe.toString());
 		}
 	}
@@ -61,10 +55,6 @@ public class primeNumbers {
 			}
 			buffer.close();
 			
-		} catch (FileNotFoundException fnfe) {
-			System.out.println(fnfe.toString());
-		} catch(EOFException eof) {
-			System.out.println(eof.toString());
 		} catch (IOException ioe) {
 			System.out.println(ioe.toString());
 		}

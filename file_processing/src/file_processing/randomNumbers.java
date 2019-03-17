@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -15,7 +16,7 @@ public class randomNumbers {
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Type in a range of numbers (between 0-255) that should be written into a file.");
+		System.out.println("Type in a range of numbers that should be written into a file.");
 		
 		System.out.print("Start: ");
 		int start = scanner.nextInt();
@@ -57,12 +58,15 @@ public class randomNumbers {
 			DataInputStream stream = new DataInputStream(buffer);
 			
 			int n;
-			do {
-				n = stream.readInt();
-				//if(n != null)
+			try {
+				while(true) {
+					n = stream.readInt();
 					System.out.print(n+" ");
-			}while(n != -1);
-			stream.close();
+				}
+			}catch(EOFException eofe) {
+				buffer.close();
+			}
+			//stream.close();
 			
 		} catch(IOException ioe){
 			System.out.println(ioe.getMessage());
