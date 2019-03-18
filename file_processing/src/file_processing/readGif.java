@@ -18,13 +18,9 @@ public class readGif {
 	}
 	
 	private static void printSaveGif(File fileIn, File fileOut) {
-		try {
-			FileInputStream input = new FileInputStream(fileIn);
-			BufferedInputStream bufferInput = new BufferedInputStream(input);
-			
-			FileOutputStream output = new FileOutputStream(fileOut);
-			BufferedOutputStream bufferOutput = new BufferedOutputStream(output);
-			
+		try(BufferedInputStream bufferInput = new BufferedInputStream(new FileInputStream(fileIn));
+			BufferedOutputStream bufferOutput = new BufferedOutputStream(new FileOutputStream(fileOut))) {
+
 			int n;
 			do {
 				n = bufferInput.read();
@@ -32,9 +28,6 @@ public class readGif {
 				if(n != -1)
 					System.out.print(n+" ");
 			}while(n != -1);
-			
-			bufferInput.close();
-			bufferOutput.close();
 			
 		} catch (IOException e) {
 			System.out.println(e.getMessage());

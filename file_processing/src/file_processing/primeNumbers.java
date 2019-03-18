@@ -26,9 +26,7 @@ public class primeNumbers {
 	
 	private static void readFile(File file) {
 
-		try {
-			FileInputStream input = new FileInputStream(file);
-			BufferedInputStream buffer = new BufferedInputStream(input);
+		try (BufferedInputStream buffer = new BufferedInputStream(new FileInputStream(file))){
 			
 			int n;
 			do {
@@ -36,7 +34,7 @@ public class primeNumbers {
 				if( n != -1)
 					System.out.print(n+" ");
 			} while(n != -1);
-			buffer.close();
+			
 		}
 		catch (IOException ioe) {
 			System.out.println(ioe.toString());
@@ -45,15 +43,13 @@ public class primeNumbers {
 
 	private static void writeFile(File file, int[] numbers) {
 		
-		try {
-			FileOutputStream output = new FileOutputStream(file);
-			BufferedOutputStream buffer = new BufferedOutputStream(output);
+		try (BufferedOutputStream buffer = new BufferedOutputStream(new FileOutputStream(file))){
 			
 			for(int i=0; i<numbers.length; i++) {
 				buffer.write((char) numbers[i]);
 				System.out.print(numbers[i]+" ");
 			}
-			buffer.close();
+			
 			
 		} catch (IOException ioe) {
 			System.out.println(ioe.toString());
