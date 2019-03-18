@@ -16,15 +16,18 @@ public class longText {
 	}
 	
 	private static void readFile(File file) {
+		StringBuilder sb = new StringBuilder();
+		
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			
 			int n;
 			do {
 				n = br.read();
 				if(n != -1)
-					System.out.print( (char) n);
+					sb.append((char) n);
 			}while(n != -1);
 			
+			System.out.print(sb);
 		} catch(IOException ioe){
 			System.out.println(ioe.getMessage());
 		}

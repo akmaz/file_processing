@@ -18,23 +18,18 @@ public class alphabet {
 	}
 	
 	private static void writeFile(File file) {
-		try{
-			FileWriter reader = new FileWriter(file);
-			BufferedWriter buffer = new BufferedWriter(reader);
+		try(BufferedWriter buffer = new BufferedWriter(new FileWriter(file))){
 			
 			for(int i = 65; i < 91; i++)
 				buffer.write(i);
-			buffer.close();
+			
 		} catch(IOException ioe) {
 			System.out.println(ioe.getMessage());
 		}
 	}
 	
 	private static void readFile(File file) {
-		try{
-			FileReader reader = new FileReader(file);
-			BufferedReader buffer = new BufferedReader(reader);
-			
+		try(BufferedReader buffer = new BufferedReader(new FileReader(file))){
 			int n;
 			do {
 				n = buffer.read();
@@ -42,7 +37,6 @@ public class alphabet {
 					System.out.print( (char) n);
 			}while(n != -1);
 			
-			buffer.close();
 		} catch(IOException ioe) {
 			System.out.println(ioe.getMessage());
 		}
