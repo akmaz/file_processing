@@ -50,7 +50,7 @@ public class primeNumbers {
 			BufferedOutputStream buffer = new BufferedOutputStream(output);
 			
 			for(int i=0; i<numbers.length; i++) {
-				buffer.write(numbers[i]);
+				buffer.write((char) numbers[i]);
 				System.out.print(numbers[i]+" ");
 			}
 			buffer.close();
