@@ -9,7 +9,7 @@ public class longText {
 
 	public static void main(String[] args) {
 		
-		File file = new File("test.txt");
+		File file = new File("longText.txt");
 		System.out.println("Plik \'"+file.getName()+"\':");
 		readFile(file);
 
