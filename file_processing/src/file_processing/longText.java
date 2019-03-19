@@ -1,9 +1,8 @@
 package file_processing;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class longText {
 
@@ -18,20 +17,19 @@ public class longText {
 	private static void readFile(File file) {
 		StringBuilder sb = new StringBuilder();
 		
-		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-			
-			int n;
-			do {
-				n = br.read();
-				if(n != -1)
-					sb.append((char) n);
-			}while(n != -1);
-			
-			System.out.print(sb);
-		} catch(IOException ioe){
-			System.out.println(ioe.getMessage());
+		try(Scanner scanner = new Scanner(file)){
+			String line;
+			while(scanner.hasNext()){
+				line = scanner.nextLine();
+				sb.append(line);
+				if(line.isEmpty())
+					sb.append('\n');
+				
+			}
+		System.out.print(sb);
+		} catch(FileNotFoundException fnfe) {
+			System.out.println(fnfe.toString());
 		}
-		
 	}
 	
 
